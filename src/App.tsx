@@ -1,11 +1,8 @@
-function App() {
+import React from 'react'
+import Event from './pages/Event'
 
-  return (
-    <div>
-      <h1>Hello world</h1>
-      <p>Teste</p>
-    </div>
-  )
+function App() {
+  return <Event />
 }
 
 export default App
