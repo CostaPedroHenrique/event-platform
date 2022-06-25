@@ -9,10 +9,10 @@ import {
 import React from 'react'
 import '@vime/core/themes/default.css'
 import { IVideoProps } from './types'
-import { useGetLessonBySlug } from '../../../../graphql/server/lesson/queries/getLessonBySlug'
+import { useGetLessonBySlugQuery } from '../../../../graphql/server/generated'
 
 const Video = ({ lessonSlug }: IVideoProps) => {
-  const { data } = useGetLessonBySlug({ variables: { slug: lessonSlug } })
+  const { data } = useGetLessonBySlugQuery({ variables: { slug: lessonSlug } })
   if (!data) {
     return (
       <div className="flex-1">
@@ -29,7 +29,7 @@ const Video = ({ lessonSlug }: IVideoProps) => {
       <div className="bg-black flex justify-center">
         <div className="h-full w-full max-w-[1100px] max-h-[60vh] aspect-video">
           <Player>
-            <Youtube videoId={data?.lesson.videoId} />
+            <Youtube videoId={data?.lesson?.videoId ?? ''} />
             <DefaultUi />
           </Player>
         </div>
@@ -38,20 +38,20 @@ const Video = ({ lessonSlug }: IVideoProps) => {
       <div className="p-8 max-w-[1100px] mx-auto">
         <div className="flex items-start gap-16">
           <div className="flex-1">
-            <h1 className="text-2xl font-bold">{data?.lesson.title}</h1>
-            {data?.lesson.description}
+            <h1 className="text-2xl font-bold">{data?.lesson?.title}</h1>
+            {data?.lesson?.description}
             <div className="flex  items-center gap-4 mt-6">
               <img
                 className="h-16 w-16 rounded-full border-2 border-blue-500"
-                src={data?.lesson.teacher.avatarURL}
-                alt={data?.lesson.teacher.name}
+                src={data?.lesson?.teacher?.avatarURL}
+                alt={data?.lesson?.teacher?.name}
               />
               <div className="leading-relaxed">
                 <strong className="font-bold text-2xl">
-                  {data?.lesson.teacher.name}
+                  {data?.lesson?.teacher?.name}
                 </strong>
                 <span className="text-gray-200 text-sm block">
-                  {data?.lesson.teacher.bio}
+                  {data?.lesson?.teacher?.bio}
                 </span>
               </div>
             </div>

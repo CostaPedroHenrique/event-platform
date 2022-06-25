@@ -1,8 +1,8 @@
 import React from 'react'
-import { useGetLessons } from '../../../graphql/server/lesson/queries/getLesson'
+import { useGetLessonsQuery } from '../../../graphql/server/generated'
 import Lesson from './Lesson'
 const Sidebar = () => {
-  const { data } = useGetLessons()
+  const { data } = useGetLessonsQuery()
   return (
     <aside
       className="w-[348px] bg-gray-700 p-6 border-l border-gray-600 hidden  md:block md:w-auto"
@@ -17,7 +17,7 @@ const Sidebar = () => {
           <Lesson
             title={lesson.title}
             availableAt={new Date(lesson.availableAt)}
-            slug={lesson.slug}
+            slug={lesson.slug ?? ''}
             type={lesson.lessonType}
             key={lesson.id}
           />

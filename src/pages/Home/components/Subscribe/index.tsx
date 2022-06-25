@@ -1,12 +1,12 @@
 import React, { useState, FormEvent } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useCreateSubscribeMutation } from '../../../../graphql/server/subscriber/mutations/createSubscriber'
+import { useCreateSubscriberMutation } from '../../../../graphql/server/generated'
 
 const NewsLetter = () => {
   const navigate = useNavigate()
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
-  const [createSubscriber, { loading }] = useCreateSubscribeMutation()
+  const [createSubscriber, { loading }] = useCreateSubscriberMutation()
 
   const handleSubscribe = async (event: FormEvent) => {
     event.preventDefault()
