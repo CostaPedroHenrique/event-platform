@@ -1,8 +1,8 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
-import Header from '../components/Header'
-import Sidebar from '../components/Sidebar'
-import Video from '../components/Video'
+import Header from './components/Header'
+import Sidebar from './components/Sidebar'
+import Video from './components/Video'
 
 const Event = () => {
   const { slug } = useParams<{ slug: string }>()
