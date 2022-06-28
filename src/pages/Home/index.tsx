@@ -2,6 +2,8 @@ import React from 'react'
 import Subscribe from './components/Subscribe'
 import Logo from '../../components/Logo'
 
+import mockUp from '../../assets/imgs/mocked.png'
+
 const Home = () => {
   return (
     <div className="min-h-screen bg-blur bg-cover bg-no-repeat flex flex-col items-center">
@@ -21,7 +23,7 @@ const Home = () => {
         </div>
         <Subscribe />
       </div>
-      <img src="/src/assets/imgs/mocked.png" className="mt-10" alt="" />
+      <img src={mockUp} className="mt-10" alt="" />
     </div>
   )
 }
